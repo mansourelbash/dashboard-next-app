@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { MemberProvider } from './context/MemberContext';
 import AsideMenu from './components/AsideMenu';
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,7 +28,8 @@ export default function RootLayout({
           {children}
           <ToastContainer />
         </MemberProvider>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js" async></Script>
+
       </body>
     </html>
   );
