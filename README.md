@@ -72,7 +72,8 @@ _This project focuses on building a Member Management Page utilizing a Component
 ![image](https://github.com/mansourelbash/dashboard-next-app/blob/main/public/screenshots/edit-member.png)
 ### Delete Page
 ![image](https://github.com/mansourelbash/dashboard-next-app/blob/main/public/screenshots/delete-member.png)
-
+### Performance Test Screenshot
+![image](https://github.com/mansourelbash/dashboard-next-app/blob/main/public/screenshots/test-performance.png)
 ## Usage
 
 ### Project Setup
