@@ -95,13 +95,13 @@ This structured approach should assist you in building a comprehensive member ma
 ## Screenshots
 
 ### Home Page 
-![image]()
+![image](https://github.com/mansourelbash/dashboard-next-app/blob/main/public/screenshots/list-member.png)
 ### Add Page
-![image]()
+![image](https://github.com/mansourelbash/dashboard-next-app/blob/main/public/screenshots/add-member.png)
 ### Edit Page
-![image]()
+![image](https://github.com/mansourelbash/dashboard-next-app/blob/main/public/screenshots/edit-member.png)
 ### Delete Page
-![image]()
+![image](https://github.com/mansourelbash/dashboard-next-app/blob/main/public/screenshots/delete-member.png)
 
 ## Usage
 
