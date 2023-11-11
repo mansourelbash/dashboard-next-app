@@ -31,7 +31,7 @@ export function MemberProvider({ children }: { children: ReactNode }) {
       toast.success('Done Updateing Member Values')
       fetchAllData();
     } catch (error) {
-      toast.success('Error Updateing Member Values',error);
+      toast.success('Error Updateing Member Values');
 
     }
   };
@@ -43,7 +43,7 @@ export function MemberProvider({ children }: { children: ReactNode }) {
       fetchAllData();
       
     } catch (error) {
-      toast.success('Error Adding Member Values',error);
+      toast.success('Error Adding Member Values');
 
     }
   }

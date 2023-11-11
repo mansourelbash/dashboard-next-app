@@ -17,7 +17,7 @@ function MemberForm() {
   const [newStartDate, setStartDate] = useState(new Date("2023/01/21"));
   const [newEndDate, setEndDate] = useState(new Date("2023/01/21"));
   const { members, setMembers} = useMemberContext();
-  const { editMember, addMember } = useMemberContext();
+  const { editMember, addMember, deleteMember } = useMemberContext();
 
   const { memberId } = useParams();
   const fillAllDate = () =>{
@@ -172,11 +172,23 @@ function MemberForm() {
           >
             {memberId ? 'Update' : 'Save'}
           </button>
+          {memberId ? (
+            <button
+              type="button"
+              onClick={() => {
+                deleteMember(memberId.toString());
+                router.push('/');
+              }}
+              className="mt-2 sm:mt-0 ml-0 sm:ml-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+            >
+              Delete
+            </button>
+          ) : ''}
 
           <button
             type="button"
             onClick={() => router.push('/')}
-            className="mt-2 sm:mt-0 ml-0 sm:ml-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+            className="mt-2 sm:mt-0 ml-0 sm:ml-2 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
           >
             Cancel
           </button>
