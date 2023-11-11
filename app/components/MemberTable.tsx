@@ -107,7 +107,7 @@ const MemberTable: React.FC<MemberListProps> = ({ membersList }) => {
       
       <DataTable
         columns={columns}
-        data={debouncedData as Member[]}  // Type assertion here
+        data={debouncedData as Member[]}  
         pagination
         paginationPerPage={10}
         paginationRowsPerPageOptions={[10, 20, 30]}

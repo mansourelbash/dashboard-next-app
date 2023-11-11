@@ -5,13 +5,11 @@ import CardHeader from '../components/CardHeader';
 import TextInput from '../components/TextInput'
 import SelectDropdown from '../components/SelectInput'
 import DatePicker from './DateInput';
-import {addMember} from '../service/api';
 import { v4 as uuidv4 } from "uuid";
 import { useParams, useRouter } from "next/navigation";
 import { useForm, Controller } from 'react-hook-form';
 import { MemberFormData } from '../types/types';
 import moment from 'moment';
-import { toast} from 'react-toastify';
 
 function MemberForm() {
   const router = useRouter();
@@ -19,7 +17,7 @@ function MemberForm() {
   const [newStartDate, setStartDate] = useState(new Date("2023/01/21"));
   const [newEndDate, setEndDate] = useState(new Date("2023/01/21"));
   const { members, setMembers} = useMemberContext();
-  const { editMember } = useMemberContext();
+  const { editMember, addMember } = useMemberContext();
 
   const { memberId } = useParams();
   const fillAllDate = () =>{
@@ -32,6 +30,8 @@ function MemberForm() {
       setValue("last_name", userIdData.last_name);
       setValue("role", userIdData.role);
       setValue("email", userIdData.email);
+      setValue("startDate", new Date(startDateNew));
+      setValue("endDate", new Date(endDateNew));
     }
   }
 
@@ -46,21 +46,17 @@ function MemberForm() {
 
   const onSubmit = async (data: MemberFormData) => {
     if (memberId) {
-      const res = await editMember({
+      await editMember({
         id: memberId.toString(),
         ...data
       });
 
     } else {
-      const res = await addMember({
+      await addMember({
         id: uuidv4(),
         ...data
       });
-      if(res){
-        toast.success('Done Adding New Member')
-      }
     }
-  
     router.push('/');
   };
   
@@ -79,7 +75,7 @@ function MemberForm() {
           name="title"
           control={control}
           defaultValue=""
-          rules={{ required: 'Title is required' }} // Add validation rules
+          rules={{ required: 'Title is required' }} 
           render={({ field }) => (
             <SelectDropdown
               id="title"

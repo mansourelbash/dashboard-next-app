@@ -1,17 +1,8 @@
 "use client"
 import React, { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction, useEffect } from 'react';
-import { deleteMember, editMember, getAllMembers } from '../service/api';
+import { deleteMember, editMember, getAllMembers, addMember } from '../service/api';
 import { toast} from 'react-toastify';
-import { Member } from '../types/types';
-
-type MemberContextProps = {
-  
-  members: Member[];
-  setMembers: Dispatch<SetStateAction<Member[]>>;
-  deleteMember: (rowID: string) => void;
-  editMember: (id:any) => Promise<void>;
-  fetchAllData: () => Promise<void>;
-};
+import { Member, MemberContextProps } from '../types/types';
 
 export const MemberContext = createContext<MemberContextProps | undefined>(undefined);
 
@@ -40,17 +31,29 @@ export function MemberProvider({ children }: { children: ReactNode }) {
       toast.success('Done Updateing Member Values')
       fetchAllData();
     } catch (error) {
-      toast.success('Error Updateing Member Values');
+      toast.success('Error Updateing Member Values',error);
 
     }
   };
+
+  const handleAdd = async (id: any) => {
+    try {
+      await addMember(id);
+      toast.success('Done Adding New Member Values')
+      fetchAllData();
+      
+    } catch (error) {
+      toast.success('Error Adding Member Values',error);
+
+    }
+  }
 
   useEffect(() => {
     fetchAllData();
   }, []);
 
   return (
-<MemberContext.Provider value={{ members, setMembers, deleteMember: handleDelete, editMember: handleUpdate, fetchAllData }}>
+<MemberContext.Provider value={{ members, setMembers, deleteMember: handleDelete, editMember: handleUpdate, fetchAllData, addMember: handleAdd }}>
   {children}
 </MemberContext.Provider>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import CardHeader from '../components/CardHeader';
 
 const mockProps = {
@@ -7,7 +7,12 @@ const mockProps = {
   title: 'Test Title',
   description: 'Test Description',
 };
+
 describe('CardHeader', () => {
+  beforeEach(() => {
+    cleanup();
+  });
+
   test('renders with provided props', () => {
     render(<CardHeader {...mockProps} />);
 
@@ -21,25 +26,24 @@ describe('CardHeader', () => {
     expect(descriptionElement).toBeInTheDocument();
   });
 
-test('renders with empty title and description', () => {
-  const props = {
-    imageURL: '',
-    title: '',
-    description: '',
-  };
+  test('renders with empty title and description', () => {
+    const props = {
+      imageURL: '',
+      title: '',
+      description: '',
+    };
 
-  render(<CardHeader {...props} />);
+    render(<CardHeader {...props} />);
 
-  const titleElement = screen.getByText('');
-  const descriptionElement = screen.getByText('');
-  expect(titleElement).toBeInTheDocument();
-  expect(descriptionElement).toBeInTheDocument();
+    const titleElement = screen.getByText('');
+    const descriptionElement = screen.getByText('');
+    expect(titleElement).toBeInTheDocument();
+    expect(descriptionElement).toBeInTheDocument();
 
-  const imageElement = screen.getByAltText('Users');
-  expect(imageElement).toBeInTheDocument();
-  expect(imageElement).toHaveAttribute('src', '');
-});
-
+    const imageElement = screen.getByAltText('Users');
+    expect(imageElement).toBeInTheDocument();
+    expect(imageElement).toHaveAttribute('src', '');
+  });
 
   test('renders with empty values for all props', () => {
     const props = {

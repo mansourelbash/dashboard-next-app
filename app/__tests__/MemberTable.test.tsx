@@ -1,14 +1,13 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom'; // Import the Jest DOM matchers
+import React, { Component, ReactNode } from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import MemberTable from '../components/MemberTable';
 
-// Mock useRouter hook
 jest.mock('next/router', () => ({
-  useRouter: jest.fn(() => ({
-    push: jest.fn(),
-  })),
+  ...jest.requireActual('next/router'),
+  useRouter: jest.fn(),
 }));
+
 interface ErrorBoundaryProps {
   children: ReactNode;
 }
@@ -23,12 +22,15 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     hasError: false,
     error: null,
   };
+
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { hasError: true, error };
   }
 
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    console.error('Error caught in ErrorBoundary:', error, errorInfo);
+  }
 
-  
   render() {
     const { hasError, error } = this.state;
 
@@ -54,17 +56,24 @@ const membersListMock = [
     email: 'john.doe@example.com',
     role: 'Admin',
   },
-  // Add more mock data as needed
 ];
 
 describe('MemberTable', () => {
   test('opens delete modal when delete button is clicked', async () => {
+    const useRouterMock = jest.fn();
+    useRouterMock.mockReturnValue({
+      push: jest.fn(),
+    });
+    jest.mock('next/router', () => ({
+      ...jest.requireActual('next/router'),
+      useRouter: useRouterMock,
+    }));
+
     render(
       <ErrorBoundary>
         <MemberTable membersList={membersListMock} />
       </ErrorBoundary>
     );
-
 
     await waitFor(() => {
       expect(screen.queryByText('Are you sure you want to delete this member?')).toBeNull();

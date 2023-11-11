@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'; // Import the Jest DOM matchers
+import '@testing-library/jest-dom/extend-expect'; 
 import MemberList from '../components/MemberList';
 
 const membersListMock = [
@@ -11,18 +11,14 @@ const membersListMock = [
     last_name: 'Doe',
     email: 'john.doe@example.com',
     role: 'Admin',
-    startDate: '2023-01-01', // Provide a sample value
+    startDate: '2023-01-01',
     endDate: '2023-12-31', 
   },
-  // Add more mock data as needed
 ];
 
 test('renders MemberList with provided membersList', () => {
   render(<MemberList membersList={membersListMock} />);
 
-  // Check if MemberTable is rendered with the provided membersList
   const memberTable = screen.getByTestId('member-table');
   expect(memberTable).toBeInTheDocument();
 });
-
-// Add more test cases as needed

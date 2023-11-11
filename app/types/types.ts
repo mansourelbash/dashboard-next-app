@@ -1,4 +1,5 @@
 import { FieldErrors } from 'react-hook-form';
+import React, {Dispatch, SetStateAction } from 'react';
 
 export interface DateInputProps {
   onInputChange: (name: string, value: string) => void;
@@ -26,8 +27,8 @@ export interface Member {
   first_name: string;
   last_name: string;
   email: string;
-  startDate?: string;
-  endDate?: string;
+  startDate: string;
+  endDate: string;
   role: string;
 }
 
@@ -74,3 +75,12 @@ export interface TextInputProps {
   error: any;
   onChange: (value: string) => void;
 }
+
+export type MemberContextProps = {
+  members: Member[];
+  setMembers: Dispatch<SetStateAction<Member[]>>;
+  deleteMember: (rowID: string) => void;
+  editMember: (id: any) => Promise<void>;
+  addMember: (id: any) => Promise<void>;
+  fetchAllData: () => Promise<void>;
+};
