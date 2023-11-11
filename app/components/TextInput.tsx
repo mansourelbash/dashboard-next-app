@@ -1,14 +1,5 @@
 import React, { ChangeEvent } from 'react';
-
-interface TextInputProps {
-  type: string;
-  name: string;
-  label: string;
-  pattern?: string;
-  value: string | undefined;
-  error: any;
-  onChange: (value: string) => void;
-}
+import {TextInputProps} from '../types/types'
 
 const TextInput: React.FC<TextInputProps> = ({ type, name, label, pattern, value, onChange, error }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

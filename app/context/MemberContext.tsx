@@ -1,18 +1,19 @@
 "use client"
 import React, { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction, useEffect } from 'react';
-import { deleteMember, editMember, getAllMembers } from '../service/getData';
+import { deleteMember, editMember, getAllMembers } from '../service/api';
 import { toast} from 'react-toastify';
 import { Member } from '../types/types';
 
 type MemberContextProps = {
+  
   members: Member[];
   setMembers: Dispatch<SetStateAction<Member[]>>;
-  deleteMember: (id: string) => Promise<void>;
+  deleteMember: (rowID: string) => void;
   editMember: (id:any) => Promise<void>;
   fetchAllData: () => Promise<void>;
 };
 
-const MemberContext = createContext<MemberContextProps | undefined>(undefined);
+export const MemberContext = createContext<MemberContextProps | undefined>(undefined);
 
 export function MemberProvider({ children }: { children: ReactNode }) {
   const [members, setMembers] = useState<Member[]>([]);
@@ -56,10 +57,10 @@ export function MemberProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useMemberContext() {
+export const useMemberContext = () => {
   const context = useContext(MemberContext);
   if (!context) {
-    throw new Error('useMemberContext must be used within a MemberProvider');
+    throw new Error('useMemberContext must be used within a MemberContextProvider');
   }
   return context;
-}
+};

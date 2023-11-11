@@ -1,5 +1,5 @@
 "use client"
-
+import * as React from 'react';
 import {useMemberContext } from './context/MemberContext';
 import MemberList from './components/MemberList';
 import CardHeader from './components/CardHeader';

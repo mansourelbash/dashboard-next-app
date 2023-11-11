@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useMemberContext } from '../context/MemberContext';
 import {ModalProps} from '../types/types'
 
 const DeleteModal: React.FC<ModalProps> = ({ isModalOpen, closeModal, rowID }) => {
-  console.log(rowID)
   const { deleteMember } = useMemberContext();
   return (
     <>

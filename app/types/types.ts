@@ -26,8 +26,8 @@ export interface Member {
   first_name: string;
   last_name: string;
   email: string;
-  startDate: Date;
-  endDate: Date;
+  startDate?: string;
+  endDate?: string;
   role: string;
 }
 
@@ -63,4 +63,14 @@ export interface CardHeaderProps {
   imageURL: string;
   title: string;
   description: string;
+}
+
+export interface TextInputProps {
+  type: string;
+  name: string;
+  label: string;
+  pattern?: string;
+  value: string | undefined;
+  error: any;
+  onChange: (value: string) => void;
 }

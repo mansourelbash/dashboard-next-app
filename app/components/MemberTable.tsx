@@ -20,7 +20,7 @@ interface MemberListProps {
 }
 
 const MemberTable: React.FC<MemberListProps> = ({ membersList }) => {
-  const { searchTerm, setSearchTerm, debouncedData } = useDebouncedSearch(membersList, 300);
+  const { searchTerm, setSearchTerm, debouncedData } = useDebouncedSearch<Member>(membersList, 300);
   const router = useRouter()
   const [isModalOpen, setModalOpen] = useState(false);
   const [rowID, setRowID] = useState("");
@@ -107,7 +107,7 @@ const MemberTable: React.FC<MemberListProps> = ({ membersList }) => {
       
       <DataTable
         columns={columns}
-        data={debouncedData}
+        data={debouncedData as Member[]}  // Type assertion here
         pagination
         paginationPerPage={10}
         paginationRowsPerPageOptions={[10, 20, 30]}

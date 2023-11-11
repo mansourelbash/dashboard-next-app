@@ -1,11 +1,11 @@
 'use client'
-import React, {useState, useEffect, useRef, useCallback } from 'react';
+import React, {useState, useEffect} from 'react';
 import { useMemberContext } from '../context/MemberContext';
 import CardHeader from '../components/CardHeader';
 import TextInput from '../components/TextInput'
 import SelectDropdown from '../components/SelectInput'
-import DateRangePicker from './DateInput';
-import {addMember} from '../service/getData';
+import DatePicker from './DateInput';
+import {addMember} from '../service/api';
 import { v4 as uuidv4 } from "uuid";
 import { useParams, useRouter } from "next/navigation";
 import { useForm, Controller } from 'react-hook-form';
@@ -32,7 +32,6 @@ function MemberForm() {
       setValue("last_name", userIdData.last_name);
       setValue("role", userIdData.role);
       setValue("email", userIdData.email);
-      console.log(userIdData.title);
     }
   }
 
@@ -167,7 +166,7 @@ function MemberForm() {
         />
       </div>
 
-        <DateRangePicker control={control} errors={errors} newStartDate={newStartDate} newEndDate={newEndDate} required={true}/>
+        <DatePicker control={control} errors={errors} newStartDate={newStartDate} newEndDate={newEndDate} required={true}/>
 
         <div className="xs:flex xs:m-10">
 
