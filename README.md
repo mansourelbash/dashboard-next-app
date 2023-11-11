@@ -6,91 +6,61 @@ _This project focuses on building a Member Management Page utilizing a Component
 
 ## Features
 
-- [x] **Two Pages for Member Management:**
-   - Create a page for entering member information.
-   - Create another page for displaying and managing members.
+- [x] **Member Management:**
+  - Create, display, and manage member information.
 
-- [x] **Member Information:**
-   - Members have details such as name, email, and role/authority.
+- [x] **Member Details:**
+  - Includes name, email, role and title.
 
 - [x] **CRUD Operations:**
-   - **Create:** Allow users to enter member information on one page.
-   - **Read:** Display the list of members on the other page using a React DataTable component.
-   - **Update:** Enable modification of member information, such as name, email, and role.
-   - **Delete:** Provide an option to delete a member.
+  - **Create:** Enter member info.
+  - **Read:** Display using React DataTable.
+  - **Update:** Modify details.
+  - **Delete:** Remove members.
 
 - [x] **Navigation:**
-   - Implement navigation between the two pages.
+  - Sidenav navigation.
 
 - [x] **Design:**
-   - Use Tailwind CSS for styling.
-   - Ensure the design is responsive, making it suitable for various screen sizes.
-   - Utilize `react-datepicker` for handling and displaying dates.
+  - Stylish with Tailwind CSS.
+  - Responsive with `react-datepicker`.
 
 - [x] **Technology Stack:**
-   - Use Next.js as the framework.
-   - Leverage React hooks for state management.
-   - Utilize React DataTable Component for displaying tabular data.
-   - Write components in TypeScript for type safety.
-   - Employ custom hooks for reusable logic.
-   - Use `react-hook-form` for form validation.
-   - Integrate `uuid` package for creating unique member IDs.
-   - Implement responsive design using Tailwind CSS.
-   - Use React icons for visual elements.
-   - Share data between components using React Context API.
-   - Implement notifications using `react-toastify`.
-   - Utilize `moment` for handling date and time.
+  - Next.js, TypeScript, React hooks, `react-data-table-component`,`react-hook-form`, `uuid`, `moment` `react-toastify`, `moment`.
+  - Jest for testing.
 
 - [x] **Testing:**
-   - Write test cases using Jest.
-   - Cover edge cases and ensure proper functionality is tested.
-   - Use Jest's mocking capabilities for external dependencies.
+  - Comprehensive Jest tests.
 
 - [x] **Additional Notes:**
-   - Ensure your application is accessible.
-   - Implement error handling and display meaningful error messages.
-   - Consider adding animations or transitions for a better user experience.
+  - Ensured accessibility, meaningful error handling, and animations for UX.
 
 ### Page 1: Enter Member Information
-- [x] Create a new page using Next.js.
-- [x] Design a form to input member details (name, email, role).
-- [x] Utilize React hooks (e.g., `useState`) to manage form state.
-- [x] Use a custom hook for form validation if needed.
-- [x] On form submission, add the member to your data source (e.g., context, state).
+- [x] Create new page.
+- [x] Design form using Flowbite Tailwind with `react-hook-form`.
+- [x] Add members on submission.
 
 ### Page 2: Display and Manage Members
-- [x] Create another page to display the list of members.
-- [x] Use the React DataTable Component to show members in a table format.
-- [x] Implement a mechanism to edit member details:
-   - [x] Use a modal or navigate to another page for editing.
-   - [x] Leverage React context to share member data between components.
+- [x] Use React DataTable.
+- [x] Implement edit with modal/navigation.
+- [x] Leverage React context.
 
-### Edit and Delete Functionality
-- [x] For the edit feature, create a form similar to the one on Page 1.
-- [x] Populate the form with the member's existing details.
-- [x] Allow users to modify the member's information.
-- [x] For the delete feature, implement a confirmation modal.
-- [x] Provide options to confirm or cancel the deletion.
+### Edit and Delete
+- [x] Create edit form.
+- [x] Allow modification.
+- [x] Delete confirmation modal.
 
 ### Navigation
-- [x] Implement navigation between the two pages using Next.js `Link` or `useRouter`.
-- [x] Ensure a smooth transition between pages.
+- [x] Smooth navigation with Next.js.
 
 ### Styling
-- [x] Apply Tailwind CSS for styling components and layouts.
-- [x] Make the design responsive using Tailwind's responsive utility classes.
+- [x] Responsive Tailwind CSS.
 
 ### Testing
-- [x] Write Jest test cases for your components and custom hooks.
-- [x] Cover edge cases and ensure proper functionality is tested.
-- [x] Use Jest's mocking capabilities for external dependencies.
+- [x] Jest test cases, including mocking.
 
 ### Additional Notes
-- [x] Ensure your application is accessible.
-- [x] Implement error handling and display meaningful error messages.
-- [x] Consider adding animations or transitions for a better user experience.
-
-This structured approach should assist you in building a comprehensive member management system with the specified features and technologies. Feel free to adapt these steps based on your specific requirements and preferences.
+- [x] Ensure accessibility, meaningful error handling, and consider animations for UX.
 
 ## Screenshots
 
